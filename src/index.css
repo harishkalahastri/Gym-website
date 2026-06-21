@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-orange: #ff5f00;
+  --color-brand-black: #000000;
+  --color-brand-charcoal: #141416;
+  --color-brand-muted: #a1a1aa;
+  
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-brand-black);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    scroll-behavior: auto; /* Required for Lenis smooth scroll */
+  }
+
+  body {
+    background-color: var(--color-brand-black);
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ff5f00;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e05300;
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-navbar {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 95, 0, 0.08);
+}
+
+.glass-pill {
+  background: rgba(20, 20, 22, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 95, 0, 0.15);
+}
+
+.glass-card {
+  background: rgba(20, 20, 22, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 95, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 95, 0, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(255, 95, 0, 0.15);
+}
+
+/* Lenis Scroll Overrides */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
