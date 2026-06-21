@@ -6,32 +6,32 @@ export default function WhyUs() {
   const features = [
     {
       title: 'Nutrition Guidance',
-      desc: 'Scientific macro plans built to fit your metabolic speed, not crash diets.',
+      desc: 'Simple, realistic meal plans that fit your lifestyle, not starving crash diets.',
       icon: <Apple className="w-5 h-5 text-brand-orange" />
     },
     {
       title: 'Expert Trainers',
-      desc: 'Coaches with elite credentials in sports science and injury rehabilitation.',
+      desc: 'Experienced coaches who focus on perfect form and preventing injuries.',
       icon: <Award className="w-5 h-5 text-brand-orange" />
     },
     {
       title: 'Progress Tracking',
-      desc: 'Digital metrics logs tracing body compositions and lifting numbers.',
+      desc: 'Weekly check-ins to track your strength gains and body fat loss.',
       icon: <Dumbbell className="w-5 h-5 text-brand-orange" />
     },
     {
-      title: 'Premium Membership',
-      desc: 'Uncapped access to elite machines, recovery bays, and coaching advice.',
+      title: 'Premium Facility',
+      desc: 'Clean, uncrowded training floor with premium equipment and recovery zones.',
       icon: <Shield className="w-5 h-5 text-brand-orange" />
     },
     {
       title: 'Community Support',
-      desc: 'An environment of focused professionals committed to athletic progression.',
+      desc: 'A supportive environment of professionals working toward the same goals.',
       icon: <Users className="w-5 h-5 text-brand-orange" />
     },
     {
       title: 'Flexible Timings',
-      desc: 'Open 6AM to 11PM daily. Your training fits around your work hours.',
+      desc: 'Open 6AM to 11PM daily. Training that fits around your busy work schedule.',
       icon: <Calendar className="w-5 h-5 text-brand-orange" />
     }
   ];
@@ -73,10 +73,10 @@ export default function WhyUs() {
               THE EXPERTISE
             </span>
             <h2 className="font-bebas text-4xl sm:text-6xl text-white tracking-tight uppercase leading-[0.95] mb-6">
-              Engineering Better <span className="font-serif italic text-brand-orange lowercase font-normal">habits</span>.
+              Build Habits That <span className="font-serif italic text-brand-orange lowercase font-normal">Last</span>.
             </h2>
             <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-              We design structures that sustain. You don't need another generic gym membership. You need a dedicated, data-backed partner to guide your lifestyle progression.
+              You don't need another generic gym membership. You need a dedicated coach to hold you accountable, fix your form, and guarantee you actually hit your goals.
             </p>
 
             {/* Combined Bullet List Stack */}

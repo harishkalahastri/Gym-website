@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-orange: #ff5f00;
+  --color-brand-orange: var(--brand-primary, #ff5f00);
   --color-brand-black: #000000;
   --color-brand-charcoal: #141416;
   --color-brand-muted: #a1a1aa;
@@ -10,6 +10,11 @@
   --font-bebas: "Bebas Neue", sans-serif;
   --font-serif: "Instrument Serif", serif;
   --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  --brand-primary: #ff5f00;
+  --brand-primary-rgb: 255, 95, 0;
 }
 
 @layer base {
@@ -34,11 +39,12 @@
     background: #000000;
   }
   ::-webkit-scrollbar-thumb {
-    background: #ff5f00;
+    background: var(--brand-primary);
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #e05300;
+    background: var(--brand-primary);
+    opacity: 0.8;
   }
 }
 
@@ -47,27 +53,27 @@
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 95, 0, 0.08);
+  border-bottom: 1px solid rgba(var(--brand-primary-rgb), 0.08);
 }
 
 .glass-pill {
   background: rgba(20, 20, 22, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 95, 0, 0.15);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.15);
 }
 
 .glass-card {
   background: rgba(20, 20, 22, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 95, 0, 0.08);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.08);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 95, 0, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(255, 95, 0, 0.15);
+  border-color: rgba(var(--brand-primary-rgb), 0.35);
+  box-shadow: 0 10px 30px -10px rgba(var(--brand-primary-rgb), 0.15);
 }
 
 /* Lenis Scroll Overrides */

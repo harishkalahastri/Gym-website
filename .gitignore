@@ -27,5 +27,10 @@ dist-ssr
 stitch-key.json
 .env
 
+# Sales dossiers (sensitive gym owner data)
+docs/sales
 
 
+
+
+.vercel

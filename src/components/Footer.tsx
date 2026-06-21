@@ -7,7 +7,7 @@ export default function Footer() {
   const gym = defaultMetrics.gymName;
 
   return (
-    <footer className="bg-brand-charcoal pt-16 pb-8 border-t border-brand-orange/10 text-left">
+    <footer className="bg-brand-charcoal pt-16 pb-24 md:pb-8 border-t border-brand-orange/10 text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-12 border-b border-white/5">

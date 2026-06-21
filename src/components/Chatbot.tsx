@@ -97,7 +97,7 @@ export default function Chatbot() {
       {/* Chat Launcher Trigger button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-40 p-4 bg-brand-charcoal border border-brand-orange/20 text-white rounded-full shadow-2xl hover:scale-105 pointer-events-auto transition-transform duration-300 hover:border-brand-orange group flex items-center justify-center"
+        className="fixed bottom-24 left-4 md:bottom-8 md:left-8 z-40 p-4 bg-brand-charcoal border border-brand-orange/20 text-white rounded-full shadow-2xl hover:scale-105 pointer-events-auto transition-transform duration-300 hover:border-brand-orange group flex items-center justify-center"
         aria-label="Toggle Fitness Assistant Chat"
       >
         <MessageSquare className="w-6 h-6 text-brand-orange" />
@@ -113,7 +113,7 @@ export default function Chatbot() {
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 30 }}
-            className="fixed bottom-24 left-6 z-50 w-full max-w-sm h-[480px] bg-brand-charcoal/95 border border-brand-orange/15 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl flex flex-col justify-between"
+            className="fixed bottom-40 left-4 md:bottom-24 md:left-8 z-50 w-[calc(100%-2rem)] md:w-full max-w-sm h-[480px] bg-brand-charcoal/95 border border-brand-orange/15 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl flex flex-col justify-between"
           >
             {/* Header info */}
             <div className="p-4 bg-black/60 border-b border-white/5 flex items-center justify-between text-left">
@@ -193,7 +193,7 @@ export default function Chatbot() {
                 <button
                   key={pidx}
                   onClick={() => handleQuickQuestion(p)}
-                  className="text-[9px] bg-brand-black hover:border-brand-orange/50 text-gray-400 hover:text-white px-2.5 py-1.5 rounded-lg border border-white/5 transition-all text-left"
+                  className="text-[10px] bg-brand-black hover:border-brand-orange/50 text-gray-400 hover:text-white px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-white/5 transition-all text-left"
                 >
                   {p}
                 </button>
@@ -223,10 +223,10 @@ export default function Chatbot() {
                 />
                 <button
                   onClick={() => handleSendMessage(inputText)}
-                  className="absolute right-2 text-brand-orange hover:text-white"
+                  className="absolute right-1 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-brand-orange hover:text-white"
                   aria-label="Send message"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-4 h-4" />
                 </button>
               </div>
             </div>

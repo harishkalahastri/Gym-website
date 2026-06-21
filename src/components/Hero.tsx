@@ -2,9 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import Hls from 'hls.js';
 import { motion } from 'framer-motion';
 import { Flame, Dumbbell, Star, Activity, ArrowRight, MessageSquare } from 'lucide-react';
+import { useGym } from '../context/GymContext';
 import { defaultMetrics } from '../config/metrics';
 
-export default function Hero() {
+interface HeroProps {
+  onOpenAssessment: () => void;
+}
+
+export default function Hero({ onOpenAssessment }: HeroProps) {
+  const { gym } = useGym();
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
@@ -28,7 +34,7 @@ export default function Hero() {
 
   useEffect(() => {
     // Count-up trust metrics animation
-    const end = defaultMetrics.membersCount;
+    const end = gym.metrics.membersCount;
     const duration = 1500;
     const startTime = performance.now();
 
@@ -52,14 +58,15 @@ export default function Hero() {
     const video = videoRef.current;
     if (!video) return;
 
-    const hlsUrl = 'https://stream.mux.com/9azaiObJDEWkWs018P6rLe00cSaFV00ITW00MaOirP2TJc4.m3u8';
     let hls: Hls | null = null;
 
-    if (prefersReducedMotion) {
-      // If user prefers reduced motion, set static poster, don't play video
-      video.pause();
+    if (prefersReducedMotion || !gym.hero.videoUrl) {
+      // If user prefers reduced motion or no video provided, set static poster, don't play video
+      if (video) video.pause();
       return;
     }
+
+    const hlsUrl = gym.hero.videoUrl;
 
     if (Hls.isSupported()) {
       hls = new Hls({
@@ -158,7 +165,7 @@ export default function Hero() {
         <video
           ref={videoRef}
           className="w-full h-full object-cover object-center opacity-75"
-          poster="https://image.mux.com/9azaiObJDEWkWs018P6rLe00cSaFV00ITW00MaOirP2TJc4/thumbnail.jpg?time=0"
+          poster={gym.hero.imageFallback}
           muted
           loop
           playsInline
@@ -190,13 +197,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-bebas text-5xl sm:text-7xl lg:text-[5.5rem] leading-[0.95] text-white tracking-tight uppercase"
+              className="font-bebas text-5xl sm:text-7xl lg:text-[5.5rem] leading-[0.95] text-white tracking-tight uppercase whitespace-pre-line"
             >
-              Transform Your Physique.<br />
-              <span className="font-serif italic text-brand-orange lowercase font-normal block mt-2 sm:inline-block sm:mt-0">
-                elevate
-              </span>{' '}
-              Your Mindset.
+              {gym.hero.headline}
             </motion.h1>
 
             {/* Subheadline & Trust counter */}
@@ -206,7 +209,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="mt-6 text-base sm:text-lg text-gray-300 max-w-xl font-normal leading-relaxed"
             >
-              Hyderabad's premium athletic coaching system. No shortcuts, no compromises. We engineer sustainable body transformations through custom training and scientific nutrition.
+              {gym.hero.subhead}
             </motion.p>
 
             {/* Trust Stat Counter (Count-up animation) */}
@@ -233,7 +236,7 @@ export default function Hero() {
                   {membersCount}+ Members
                 </span>
                 <span className="text-xs text-gray-400 block tracking-wide uppercase">
-                  ⭐ 4.9 Avg Google Rating
+                  ⭐ {gym.metrics.ratingValue} Avg Google Rating
                 </span>
               </div>
             </motion.div>
@@ -254,20 +257,20 @@ export default function Hero() {
                 <ArrowRight className="w-4 h-4 ml-2" />
               </a>
 
-              {/* Secondary: Watch Transformations */}
+              {/* Secondary: Take Assessment */}
               <button
-                onClick={handleScrollToTransformations}
+                onClick={(e) => { e.preventDefault(); onOpenAssessment(); }}
                 className="inline-flex items-center justify-center px-6 py-4 text-sm font-bold uppercase tracking-wider text-white border border-brand-orange/30 bg-brand-charcoal/40 backdrop-blur-md rounded-full hover:border-brand-orange hover:bg-brand-charcoal/60 transition-all duration-300"
               >
-                Watch Transformations
+                Take Assessment
               </button>
 
               {/* Tertiary: WhatsApp Coach */}
               <a
-                href="https://wa.me/919999999999?text=Hello%20Onyx%20Fitness!%20I'd%20like%20to%20know%20more%20about%20your%20personal%20training%20programs."
+                href={`https://wa.me/919999999999?text=Hello%20${encodeURIComponent(gym.name)}!%20I'd%20like%20to%20know%20more%20about%20your%20personal%20training%20programs.`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center text-xs font-semibold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition-colors py-2"
+                className="inline-flex items-center justify-center text-xs font-semibold uppercase tracking-wider text-gray-300 hover:text-brand-orange transition-colors py-3 min-h-[44px]"
               >
                 <MessageSquare className="w-4 h-4 mr-2 text-brand-orange" />
                 WhatsApp Coach

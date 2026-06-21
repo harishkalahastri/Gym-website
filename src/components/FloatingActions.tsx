@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MessageSquare, ArrowUp, CalendarRange } from 'lucide-react';
+interface FloatingActionsProps {
+  onOpenAssessment: () => void;
+}
 
-export default function FloatingActions() {
+export default function FloatingActions({ onOpenAssessment }: FloatingActionsProps) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -32,20 +35,19 @@ export default function FloatingActions() {
     <>
       {/* 1. MOBILE STICKY CONVERSION BAR (Thumb optimized, bottom of viewport, hidden on desktop) */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-45 bg-black/85 backdrop-blur-md border-t border-brand-orange/15 py-3 px-4 shadow-xl flex items-center justify-between">
-        <a
-          href="#trial-form"
-          onClick={handleScrollToForm}
+        <button
+          onClick={(e) => { e.preventDefault(); onOpenAssessment(); }}
           className="flex-1 mr-2 py-3 bg-brand-orange text-black font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center shadow-lg shadow-brand-orange/10"
         >
           <CalendarRange className="w-4 h-4 mr-2" />
-          Book Trial
-        </a>
+          Start Assessment
+        </button>
         
         <a
           href="https://wa.me/919999999999?text=Hello!%20I'd%20like%20to%20know%20more%20about%20membership%20options."
           target="_blank"
           rel="noreferrer"
-          className="p-3 bg-brand-charcoal text-white rounded-xl border border-white/5 mx-1"
+          className="p-3 bg-brand-charcoal text-white rounded-xl border border-white/5 mx-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="WhatsApp Coach"
         >
           <MessageSquare className="w-4 h-4 text-brand-orange" />
@@ -53,7 +55,7 @@ export default function FloatingActions() {
 
         <a
           href="tel:+919999999999"
-          className="p-3 bg-brand-charcoal text-white rounded-xl border border-white/5 ml-1"
+          className="p-3 bg-brand-charcoal text-white rounded-xl border border-white/5 ml-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="Call Gym"
         >
           <Phone className="w-4 h-4 text-brand-orange" />
@@ -61,7 +63,7 @@ export default function FloatingActions() {
       </div>
 
       {/* 2. GLOBAL FLOATING ACTION DOCK (Desktop bottom-right. On mobile, shifted up to not overlap sticky bar) */}
-      <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 flex flex-col space-y-3 items-center pointer-events-none">
+      <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-40 flex flex-col space-y-3 items-center pointer-events-none">
         
         {/* Scroll To Top button (grows on scroll status) */}
         {showScrollTop && (
@@ -86,14 +88,13 @@ export default function FloatingActions() {
         </a>
 
         {/* Floating Calendar Trial button (Desktop only) */}
-        <a
-          href="#trial-form"
-          onClick={handleScrollToForm}
+        <button
+          onClick={(e) => { e.preventDefault(); onOpenAssessment(); }}
           className="hidden md:flex p-3.5 bg-brand-orange text-black rounded-full shadow-2xl pointer-events-auto transition-all duration-300 hover:scale-105 hover:bg-brand-orange/90"
-          aria-label="Book Trial"
+          aria-label="Book Assessment"
         >
           <CalendarRange className="w-5 h-5" />
-        </a>
+        </button>
 
       </div>
     </>

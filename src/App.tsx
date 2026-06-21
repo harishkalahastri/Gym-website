@@ -13,8 +13,8 @@ import Metrics from './components/Metrics';
 import WhySucceed from './components/WhySucceed';
 import WhyUs from './components/WhyUs';
 import Programs from './components/Programs';
-import BMICalculator from './components/BMICalculator';
-import FitnessQuiz from './components/FitnessQuiz';
+import Process from './components/Process';
+import AssessmentFlow from './components/AssessmentFlow';
 import Gallery from './components/Gallery';
 import FirstVisit from './components/FirstVisit';
 import Pricing from './components/Pricing';
@@ -29,8 +29,7 @@ import ExitIntent from './components/ExitIntent';
 import OpsCenter from './components/OpsCenter';
 
 export default function App() {
-  const [isBmiModalOpen, setIsBmiModalOpen] = useState(false);
-  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
+  const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
@@ -53,11 +52,10 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
       {/* 1. Global Navigation */}
       <Navbar
-        onOpenQuiz={() => setIsQuizModalOpen(true)}
-        onOpenBMI={() => setIsBmiModalOpen(true)}
+        onOpenAssessment={() => setIsAssessmentOpen(true)}
       />
 
       {/* 2. Structured Layout sections */}
@@ -86,11 +84,8 @@ export default function App() {
         {/* Section 8: Programs Adaptation Splits */}
         <Programs />
 
-        {/* Section 9: BMI Calculator (In-page Flow) */}
-        <BMICalculator />
-
-        {/* Section 10: Fitness Quiz (In-page Flow) */}
-        <FitnessQuiz />
+        {/* Section 8.5: Our Process */}
+        <Process />
 
         {/* Section 11: Club zones gallery */}
         <Gallery />
@@ -118,70 +113,16 @@ export default function App() {
       <Footer />
 
       {/* 4. Global Overlays, Sticky CTAs & Analytics panels */}
-      <FloatingActions />
+      <FloatingActions onOpenAssessment={() => setIsAssessmentOpen(true)} />
       <Chatbot />
       <ExitIntent />
       <OpsCenter />
 
-      {/* BMI Calculator Quick Modal */}
-      <AnimatePresence>
-        {isBmiModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsBmiModalOpen(false)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-sm"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-4xl z-10"
-            >
-              <button
-                onClick={() => setIsBmiModalOpen(false)}
-                className="absolute top-4 right-4 z-30 p-2 text-gray-400 hover:text-white bg-brand-charcoal/80 rounded-full border border-white/5"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-              <BMICalculator />
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* Fitness Quiz Quick Modal */}
-      <AnimatePresence>
-        {isQuizModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsQuizModalOpen(false)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-sm"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-4xl z-10"
-            >
-              <button
-                onClick={() => setIsQuizModalOpen(false)}
-                className="absolute top-4 right-4 z-30 p-2 text-gray-400 hover:text-white bg-brand-charcoal/80 rounded-full border border-white/5"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-              <FitnessQuiz />
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      {/* Premium Assessment Flow Modal */}
+      <AssessmentFlow 
+        isOpen={isAssessmentOpen} 
+        onClose={() => setIsAssessmentOpen(false)} 
+      />
     </div>
   );
 }

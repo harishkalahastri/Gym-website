@@ -67,7 +67,7 @@ export default function Gallery() {
             </h2>
           </div>
           <p className="mt-4 md:mt-0 text-gray-400 max-w-sm text-sm">
-            A visual walk through our training zones, precision equipment, active coaching hours, and community strength. No random bodybuilding screenshots.
+            A visual walk through our training zones, precision equipment, and community. We don't use stock photos. This is the real facility you'll be training in.
           </p>
         </div>
 

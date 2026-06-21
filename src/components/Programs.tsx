@@ -18,59 +18,59 @@ export default function Programs() {
     {
       id: 'p1',
       title: 'Weight Loss',
-      desc: 'Lose fat, retain lean muscle, and optimize thyroid speed via dynamic caloric programming.',
+      desc: 'Burn stubborn body fat while maintaining muscle through simple, sustainable nutrition and lifting.',
       img: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=600',
-      tag: 'Metabolic Split',
+      tag: 'Fat Loss',
     },
     {
       id: 'p2',
       title: 'Muscle Gain',
-      desc: 'Build structural muscle mass through focused hypertrophy schedules and nutrient-dense surplus planning.',
+      desc: 'Add noticeable muscle size and strength with structured lifting and guided nutrition.',
       img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&q=80&w=600',
-      tag: 'Hypertrophy Split',
+      tag: 'Muscle Gain',
     },
     {
       id: 'p3',
       title: 'Strength Training',
-      desc: 'Re-engineer raw physical power through central nervous system conditioning and barbell mastery.',
+      desc: 'Dramatically increase your squat, bench, and deadlift with expert programming and form correction.',
       img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=600',
-      tag: 'CNS Power Split',
+      tag: 'Raw Strength',
     },
     {
       id: 'p4',
       title: 'Personal Training',
-      desc: '1-on-1 private coaching utilizing biometric feedback and physical therapy alignment.',
+      desc: 'Work directly with an expert coach who holds you accountable to your specific lifestyle goals.',
       img: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=600',
-      tag: '1-on-1 Private',
+      tag: '1-on-1 Coaching',
       isFeatured: true
     },
     {
       id: 'p5',
       title: 'Functional Fitness',
-      desc: 'Enhance mobility, joint capsule stability, and raw athletic capacity for daily efficiency.',
+      desc: 'Improve your flexibility, fix joint pain, and move effortlessly through your daily life.',
       img: 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&q=80&w=600',
-      tag: 'Joint Longevity',
+      tag: 'Functional Health',
     },
     {
       id: 'p6',
       title: 'Women\'s Fitness',
-      desc: 'Endocrine-supportive training and pelvic floor/core stabilization engineered for health and shape.',
+      desc: 'Training designed specifically for female body composition, core strength, and lasting confidence.',
       img: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=600',
-      tag: 'Endocrine Support',
+      tag: 'Tone & Shape',
     },
     {
       id: 'p7',
       title: 'Athletic Performance',
-      desc: 'Unilateral agility work, reactive force development, and raw explosive speed drills.',
+      desc: 'Train like an athlete. Build explosive speed, agility, and peak cardiovascular endurance.',
       img: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=600',
-      tag: 'Reactive Power',
+      tag: 'Athletic Conditioning',
     },
     {
       id: 'p8',
       title: 'Beginner Transformation',
-      desc: 'Gentle, structured entry path targeting joint safety, motor patterns, and basic gym confidence.',
+      desc: 'A safe, welcoming program for beginners to learn proper form and build gym confidence.',
       img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=600',
-      tag: 'Foundation Split',
+      tag: 'Beginner Friendly',
     }
   ];
 
@@ -82,14 +82,14 @@ export default function Programs() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div className="max-w-2xl">
             <span className="text-xs uppercase font-bold tracking-widest text-brand-orange block mb-3">
-              TRANSFORMATION BLUEPRINTS
+              TRAINING PROGRAMS
             </span>
             <h2 className="font-bebas text-4xl sm:text-6xl text-white tracking-tight uppercase leading-[0.95]">
-              Discover What Sets Us <span className="font-serif italic text-brand-orange lowercase font-normal">apart</span>
+              Training That Fits Your <span className="font-serif italic text-brand-orange lowercase font-normal">Goals</span>
             </h2>
           </div>
           <p className="mt-4 md:mt-0 text-gray-400 max-w-sm text-sm">
-            We target specific physical adaptations. Select the blueprint that matches your primary goal. Each program includes full nutritional templates.
+            We don't do cookie-cutter workouts. Select the program that matches your primary goal, and we'll handle the rest.
           </p>
         </div>
 

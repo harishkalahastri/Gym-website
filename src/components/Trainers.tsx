@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Instagram, X } from 'lucide-react';
 
+import { useGym } from '../context/GymContext';
+
 interface Trainer {
   id: string;
   name: string;
@@ -14,40 +16,19 @@ interface Trainer {
 }
 
 export default function Trainers() {
+  const { gym } = useGym();
   const [selectedTrainer, setSelectedTrainer] = useState<Trainer | null>(null);
 
-  const trainers: Trainer[] = [
-    {
-      id: 'tr1',
-      name: 'Coach Vikram',
-      specialty: 'CNS Barbell Power & Hypertrophy',
-      exp: '8+ Years',
-      insta: 'https://instagram.com/coachvikram',
-      bio: 'Vikram has spent nearly a decade coaching competitive powerlifters and athletes in Hyderabad. He specializes in nervous system adaptation, structural loading mechanics, and macro programming for pure physical size and power.',
-      portraitImg: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=600',
-      actionImg: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=600',
-    },
-    {
-      id: 'tr2',
-      name: 'Coach Harish',
-      specialty: 'Biomechanics & Rehabilitation',
-      exp: '10+ Years',
-      insta: 'https://instagram.com/coachharish',
-      bio: 'Harish holds an advanced degree in Kinesiology and specializes in corrective exercise therapy. He works with members seeking to rebuild joint safety, fix lumbar posture imbalances, and train around old athletic injuries.',
-      portraitImg: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600',
-      actionImg: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=600',
-    },
-    {
-      id: 'tr3',
-      name: 'Coach Riya',
-      specialty: 'Metabolic & Endocrine Nutrition',
-      exp: '6+ Years',
-      insta: 'https://instagram.com/coachriya',
-      bio: 'Riya specializes in endocrine-supportive fat loss plans, female hypertrophy splits, and sustainable lifestyle habit coaching. She guides members through custom macro profiles that support thyroid health without restrictive fasting.',
-      portraitImg: 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&q=80&w=600',
-      actionImg: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&q=80&w=600',
-    }
-  ];
+  const trainers: Trainer[] = gym.trainers.map((t, idx) => ({
+    id: `tr${idx}`,
+    name: t.name,
+    specialty: t.specialty,
+    exp: 'Expert Coach',
+    insta: '#',
+    bio: t.bio,
+    portraitImg: t.image,
+    actionImg: t.image,
+  }));
 
   return (
     <section id="trainers" className="py-24 bg-brand-charcoal/20 relative border-b border-brand-orange/5">
