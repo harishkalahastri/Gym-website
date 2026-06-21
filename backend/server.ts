@@ -592,6 +592,12 @@ app.get('/api/leads/list', async (req: express.Request, res: express.Response) =
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`[BACKEND SERVER] Express proxy listening on http://localhost:${PORT}`);
-});
+// Export for Vercel serverless functions
+export default app;
+
+// Only start listening in local development (not on Vercel)
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[BACKEND SERVER] Express proxy listening on http://localhost:${PORT}`);
+  });
+}
