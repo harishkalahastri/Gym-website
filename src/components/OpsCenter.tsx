@@ -75,15 +75,6 @@ export default function OpsCenter() {
 
   return (
     <>
-      {/* Hidden/Subtle Settings Gear for Pitch triggering (visible bottom-left near chat) */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-6 md:bottom-32 md:right-8 z-40 p-2 bg-brand-charcoal/50 hover:bg-brand-charcoal text-gray-500 hover:text-white rounded-full border border-white/5 shadow pointer-events-auto transition-colors"
-        title="Open Pitch Operator Control Room"
-      >
-        <Settings className="w-4 h-4" />
-      </button>
-
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-50 flex justify-end">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Settings } from 'lucide-react';
 import { useGym } from '../context/GymContext';
 
 interface NavbarProps {
@@ -114,6 +114,13 @@ export default function Navbar({ onOpenAssessment }: NavbarProps) {
             >
               Book Free Trial
             </a>
+            <button
+              onClick={() => window.dispatchEvent(new Event('toggle-ops-center'))}
+              className="p-2 ml-2 rounded-full bg-brand-charcoal/50 border border-white/5 text-gray-400 hover:text-white hover:bg-brand-charcoal transition-colors"
+              title="Pitch Controls"
+            >
+              <Settings className="w-4 h-4" />
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -125,6 +132,13 @@ export default function Navbar({ onOpenAssessment }: NavbarProps) {
             >
               Trial
             </a>
+            <button
+              onClick={() => window.dispatchEvent(new Event('toggle-ops-center'))}
+              className="p-2 text-gray-400 hover:text-white bg-brand-charcoal/50 border border-white/5 rounded-full flex items-center justify-center min-h-[44px] min-w-[44px]"
+              aria-label="Settings"
+            >
+              <Settings className="w-4 h-4" />
+            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2.5 -mr-2 text-gray-300 hover:text-white focus:outline-none flex items-center justify-center min-h-[44px] min-w-[44px]"
