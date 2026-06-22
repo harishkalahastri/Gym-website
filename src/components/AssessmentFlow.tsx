@@ -132,7 +132,7 @@ export default function AssessmentFlow({ isOpen, onClose }: AssessmentFlowProps)
           >
             {renderStepIndicator()}
 
-            <div className="flex-1 overflow-y-auto p-6 sm:p-10 hide-scrollbar relative">
+            <div className="flex-1 overflow-y-auto p-6 sm:p-10 hide-scrollbar relative" data-lenis-prevent="true">
               {/* Step 1: BMI */}
               {step === 1 && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

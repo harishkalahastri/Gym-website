@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, ShieldCheck, Flame, Star, Award } from 'lucide-react';
+import type { SelectedPlan } from './EnrollmentModal';
 
-interface PricingTier {
+export interface PricingTier {
   id: string;
   name: string;
   price: string;
@@ -14,7 +15,11 @@ interface PricingTier {
   icon: React.ReactNode;
 }
 
-export default function Pricing() {
+interface PricingProps {
+  onSelectPlan?: (plan: SelectedPlan) => void;
+}
+
+export default function Pricing({ onSelectPlan }: PricingProps) {
   const tiers: PricingTier[] = [
     {
       id: 'pr1',
@@ -161,16 +166,21 @@ export default function Pricing() {
 
               {/* Action Button */}
               <div className="mt-8 pt-4">
-                <a
-                  href="#trial-form"
-                  className={`w-full py-3.5 block text-center text-xs font-bold uppercase tracking-wider rounded-xl transition-all ${
+                <button
+                  onClick={() => onSelectPlan && onSelectPlan({
+                    name: tier.name,
+                    price: tier.price,
+                    period: tier.period,
+                    description: tier.description
+                  })}
+                  className={`w-full py-3.5 block text-center text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer ${
                     tier.isFeatured
                       ? 'bg-brand-orange text-black hover:bg-brand-orange/90'
                       : 'bg-brand-black text-white hover:bg-brand-charcoal border border-brand-orange/15 hover:border-brand-orange/30'
                   }`}
                 >
                   Join {tier.name.split(' ')[0]}
-                </a>
+                </button>
               </div>
             </motion.div>
           ))}

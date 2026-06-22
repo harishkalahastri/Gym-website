@@ -80,17 +80,20 @@ export default function WhyUs() {
             </p>
 
             {/* Combined Bullet List Stack */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
               {features.map((feat, idx) => (
-                <div key={idx} className="flex items-start space-x-3.5 group">
-                  <div className="p-2 bg-brand-orange/10 rounded-lg group-hover:bg-brand-orange group-hover:text-black transition-colors duration-300 shrink-0">
+                <div 
+                  key={idx} 
+                  className="flex items-start space-x-4 group p-4 -m-4 rounded-2xl border border-transparent hover:border-brand-orange/20 hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(255,95,0,0.12)] hover:bg-brand-orange/[0.02] transition-all duration-300"
+                >
+                  <div className="p-2.5 bg-brand-orange/10 border border-brand-orange/5 rounded-xl group-hover:bg-brand-orange/15 group-hover:border-brand-orange/40 group-hover:shadow-[0_0_25px_rgba(255,95,0,0.25)] group-hover:scale-105 transition-all duration-300 shrink-0">
                     {feat.icon}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white group-hover:text-brand-orange transition-colors">
+                    <h4 className="text-sm font-bold text-white group-hover:text-brand-orange transition-colors duration-300">
                       {feat.title}
                     </h4>
-                    <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                    <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">
                       {feat.desc}
                     </p>
                   </div>

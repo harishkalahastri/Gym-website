@@ -13,6 +13,7 @@ interface TransformationItem {
   trainer: string;
   goal: string;
   details: string[];
+  pricingPlan: string;
 }
 
 export default function Transformations() {
@@ -33,7 +34,8 @@ export default function Transformations() {
         'Increased deadlift from 100kg to 180kg',
         'Reduced overall body fat percentage by 4%',
         'Significantly improved shoulder mobility and posture'
-      ]
+      ],
+      pricingPlan: 'Half-Year Build'
     },
     {
       id: 't2',
@@ -49,7 +51,8 @@ export default function Transformations() {
         'Dropped 3 dress sizes in 3 months',
         'Built full cardiovascular endurance (runs 5k comfortably)',
         'Healed chronic lower back pain through core strengthening'
-      ]
+      ],
+      pricingPlan: 'Quarterly Adapt'
     },
     {
       id: 't3',
@@ -65,7 +68,8 @@ export default function Transformations() {
         'Normalized blood pressure and cholesterol levels',
         'Achieved first pull-up in 15 years',
         'Decreased resting heart rate from 78 to 61 BPM'
-      ]
+      ],
+      pricingPlan: 'Half-Year Build'
     }
   ];
 
@@ -248,11 +252,11 @@ export default function Transformations() {
                   {/* Actions inside Modal */}
                   <div className="mt-8 pt-6 border-t border-white/5 flex gap-4">
                     <a
-                      href="#trial-form"
+                      href="#pricing"
                       onClick={() => setSelectedItem(null)}
                       className="flex-1 py-3 text-center text-xs font-bold uppercase tracking-wider text-black bg-brand-orange rounded-xl hover:bg-brand-orange/90 transition-all"
                     >
-                      Book Similar Plan
+                      Book {selectedItem.pricingPlan}
                     </a>
                   </div>
                 </div>

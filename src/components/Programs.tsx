@@ -10,8 +10,11 @@ interface ProgramCard {
   tag: string;
   isFeatured?: boolean;
 }
+interface ProgramsProps {
+  onSelectProgram?: (id: string) => void;
+}
 
-export default function Programs() {
+export default function Programs({ onSelectProgram }: ProgramsProps) {
   const [activeCard, setActiveCard] = useState<string>('p4'); // Default featured: Personal Training
 
   const programs: ProgramCard[] = [
@@ -147,9 +150,15 @@ export default function Programs() {
                   {/* Action Link */}
                   <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-500 group-hover:text-brand-orange transition-colors">
                     <span>Adaptive Schedule</span>
-                    <a href="#trial-form" className="text-brand-orange hover:underline font-bold">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectProgram && onSelectProgram(prog.id);
+                      }}
+                      className="text-brand-orange hover:underline font-bold cursor-pointer"
+                    >
                       Book Split &rarr;
-                    </a>
+                    </button>
                   </div>
                 </div>
               </motion.div>

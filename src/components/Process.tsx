@@ -2,7 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ClipboardList, NotebookPen, Dumbbell, LineChart, Trophy } from 'lucide-react';
 
-export default function Process() {
+interface ProcessProps {
+  onOpenAssessment?: () => void;
+}
+
+export default function Process({ onOpenAssessment }: ProcessProps) {
   const steps = [
     {
       id: 'step-1',
@@ -106,12 +110,12 @@ export default function Process() {
 
         {/* Global CTA */}
         <div className="mt-20 text-center">
-          <a
-            href="#trial-form"
+          <button
+            onClick={onOpenAssessment}
             className="inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-wider text-black bg-brand-orange rounded-full hover:bg-brand-orange/90 transition-all duration-300 transform hover:scale-[1.03] shadow-lg shadow-brand-orange/20"
           >
             Start Your Assessment
-          </a>
+          </button>
         </div>
 
       </div>

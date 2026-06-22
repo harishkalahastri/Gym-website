@@ -99,17 +99,7 @@ export default function Trainers() {
                   </p>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
-                  <a
-                    href={item.insta}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 bg-brand-black hover:bg-brand-orange hover:text-black rounded-lg text-gray-400 transition-colors border border-white/5"
-                    aria-label="Instagram Profile"
-                  >
-                    <Instagram className="w-4 h-4" />
-                  </a>
-
+                <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-end">
                   <button
                     onClick={() => setSelectedTrainer(item)}
                     className="px-4 py-2 bg-brand-orange text-black font-bold uppercase tracking-wider text-[10px] rounded-lg hover:bg-brand-orange/90 transition-all"
